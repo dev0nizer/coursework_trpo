@@ -31,20 +31,11 @@ class Citizen
             std::cout << name << " " << city << " " << phonenumber << std::endl;
         }
 
-        void LoadFromFile()
-        {
-            std::ifstream file("filepath");
-        }
-
 };
 
-
-
-
-int main()
+std::vector <Citizen> LoadFromFile()
 {
     std::vector <Citizen> people;
-
     std::ifstream file("data.txt");
     if (file.is_open())
     {
@@ -66,14 +57,20 @@ int main()
             temp.Add(tempname, tempcity, tempphonenumber);
             people.push_back(temp);
         }
+        std::cout << "Successfully loaded from file!" << std::endl;
+        return people;
     }
     else
     {
         std::cout << "Error! Cannot open file";
-        return 0;
+        return people;
     }
+}
 
-    
+int main()
+{
+    std::vector <Citizen> people = LoadFromFile();
+
     std::map<int,int> index;
     std::map<int,int>::iterator it;
     for (int i = 0; i < people.size(); i++)

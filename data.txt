@@ -1,0 +1,10 @@
+Putin|Moscow|3214
+Trump|Washington|6587
+Kim Jong Un|Pheniang|4552
+Merkel|Berlin|1115
+Johnson|London|9864
+Macron|Paris|3762
+Conte|Rome|4444
+Duda|Warsaw|7777
+Erdogan|Ankara|6666
+Xi Jinping|Beijing|1111
