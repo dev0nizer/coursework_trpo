@@ -21,6 +21,16 @@ class Citizen
             phonenumber = add_phonenumber;
         }
 
+        void AddFromKeyboard()
+        {
+            std::cout << "Enter name" << std::endl;
+            std::cin >> name;
+            std::cout << "Enter city" << std::endl;
+            std::cin >> city;
+            std::cout << "Enter phone number" << std::endl;
+            std::cin >> phonenumber;        
+        }
+
         int Getnumber()
         {
             return phonenumber;
@@ -35,7 +45,7 @@ class Citizen
 
 std::vector <Citizen> LoadFromFile()
 {
-    std::vector <Citizen> people;
+    std::vector <Citizen> temppeople;
     std::ifstream file("data.txt");
     if (file.is_open())
     {
@@ -55,21 +65,78 @@ std::vector <Citizen> LoadFromFile()
             tempphonenumber = std::stoi(templine);
             Citizen temp;
             temp.Add(tempname, tempcity, tempphonenumber);
-            people.push_back(temp);
+            temppeople.push_back(temp);
         }
         std::cout << "Successfully loaded from file!" << std::endl;
-        return people;
+        return temppeople;
     }
     else
     {
         std::cout << "Error! Cannot open file";
-        return people;
+        return temppeople;
     }
 }
 
 int main()
 {
-    std::vector <Citizen> people = LoadFromFile();
+    std::vector <Citizen> people;
+    bool exit = false;
+    while (!exit)
+    {
+        std::cout << "Choose option:" << std::endl;
+        std::cout << "1) Load from file(re-write current)" << std::endl;
+        std::cout << "2) Add member to data" << std::endl;
+        std::cout << "3) Find member by exact input" << std::endl;
+        std::cout << "4) Find member by range" << std::endl;
+        std::cout << "5) Print current dataset" << std::endl;
+        std::cout << "5) Exit prog" << std::endl;
+        int x;
+        std::cin >> x;
+        switch (x)
+        {
+        case 1:
+            {
+                people = LoadFromFile();
+                break;
+            }
+        case 2:
+        {
+            Citizen temp;
+            temp.AddFromKeyboard();
+            people.push_back(temp);
+            break;
+        }
+        case 3:
+        {
+            std::cout << "Enter number" << std::endl;
+            int input;
+            std::cin >> input;
+            bool found = false;
+            int i=0;
+            for (i=0; i<people.size(); i++)
+            {
+                if (people[i].Getnumber() == input)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (found)
+            {
+                std::cout << "Found: ";
+                people[i].GetMember();
+            }
+            
+        }
+        
+        default:
+            {
+                std::cout << "Invalid input" << std::endl;
+                break;
+            }
+        }
+    }
+
 
     std::map<int,int> index;
     std::map<int,int>::iterator it;
