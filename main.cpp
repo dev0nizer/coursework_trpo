@@ -89,7 +89,7 @@ int main()
         std::cout << "3) Find member by exact input" << std::endl;
         std::cout << "4) Find member by range" << std::endl;
         std::cout << "5) Print current dataset" << std::endl;
-        std::cout << "5) Exit prog" << std::endl;
+        std::cout << "6) Exit prog" << std::endl;
         int x;
         std::cin >> x;
         switch (x)
@@ -126,7 +126,25 @@ int main()
                 std::cout << "Found: ";
                 people[i].GetMember();
             }
+            else
+            {
+                std::cout << "Member not found" << std::endl;
+            }
             
+            break;
+        }
+
+        case 5:
+        {
+            for (int i=0; i<people.size(); i++)
+            {
+                people[i].GetMember();
+            }
+            break;
+        }
+        case 6:
+        {
+            return 0;
         }
         
         default:
