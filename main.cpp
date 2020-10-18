@@ -133,6 +133,42 @@ int main()
             
             break;
         }
+        
+
+        case 4:
+        {
+            std::map<int,int> index;
+            std::map<int,int>::iterator it;
+            for (int i = 0; i < people.size(); i++)
+            {
+                index.insert(std::make_pair(people[i].Getnumber(), i));
+            }
+
+            
+            int phone_range_begin;
+            int phone_range_end;
+            std::cout << "Enter range begin" << std::endl;
+            std::cin >> phone_range_begin;
+            std::cout << "Enter range end" << std::endl;
+            std::cin >> phone_range_end;
+            bool found = false;
+            for (it = index.begin(); it != index.end(); it++)
+            {
+                if(it->first > phone_range_begin && it->first < phone_range_end)
+                {
+                    people[it->second].GetMember();
+                    found = true;
+                }
+
+            }
+            
+            if(!found)
+            {
+                std::cout << "OOPS! No result" << std::endl;
+            }
+
+            break;      
+        }
 
         case 5:
         {
@@ -154,35 +190,6 @@ int main()
             }
         }
     }
-
-
-    std::map<int,int> index;
-    std::map<int,int>::iterator it;
-    for (int i = 0; i < people.size(); i++)
-    {
-        index.insert(std::make_pair(people[i].Getnumber(), i));
-    }
-
     
-    int phone_range_begin;
-    int phone_range_end;
-    std::cout << "Enter range begin" << std::endl;
-    std::cin >> phone_range_begin;
-    std::cout << "Enter range end" << std::endl;
-    std::cin >> phone_range_end;
-    bool found = false;
-    for (it = index.begin(); it != index.end(); it++)
-    {
-        if(it->first > phone_range_begin && it->first < phone_range_end)
-        {
-            people[it->second].GetMember();
-            found = true;
-        }
-
-    }
-    
-    if(!found) std::cout << "OOPS! No result" << std::endl;
-
-    system("pause");
     return 0;
 }
