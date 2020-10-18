@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <map>
 #include <vector>
 #include "func.cpp"
 
@@ -56,7 +55,7 @@ int main()
             std::cout << "Enter range end" << std::endl;
             std::cin >> phone_range_end;
             bool found = findbyrange(people, phone_range_begin, phone_range_end);
-
+            
             break;      
         }
 

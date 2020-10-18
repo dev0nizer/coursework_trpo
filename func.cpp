@@ -1,9 +1,8 @@
+#define filepath "data.txt"
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <map>
 #include <vector>
-#define filepath "data.txt"
 
 class Citizen
 {
@@ -26,7 +25,7 @@ class Citizen
             std::cout << "Enter city" << std::endl;
             std::cin >> city;
             std::cout << "Enter phone number" << std::endl;
-            std::cin >> phonenumber;        
+            std::cin >> phonenumber;
         }
 
         int Getnumber()
@@ -34,9 +33,16 @@ class Citizen
             return phonenumber;
         }
 
-        void GetMember()
+        std::string GetMember()
         {
             std::cout << name << " " << city << " " << phonenumber << std::endl;
+            std::string temp;
+            temp.append(name);
+            temp.append(" ");
+            temp.append(city);
+            temp.append(" ");
+            temp.append(std::to_string(phonenumber));
+            return temp;
         }
 
 };
