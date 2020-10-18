@@ -118,15 +118,11 @@ int main()
                 if (people[i].Getnumber() == input)
                 {
                     found = true;
-                    break;
+                    people[i].GetMember();
                 }
             }
             if (found)
-            {
-                std::cout << "Found: ";
-                people[i].GetMember();
-            }
-            else
+            if (!found)
             {
                 std::cout << "Member not found" << std::endl;
             }
