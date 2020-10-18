@@ -98,3 +98,28 @@ bool findbyexactphone(std::vector<Citizen> inputvector, int inputnumber)
     }
     
 }
+
+bool findbyrange(std::vector<Citizen> inputvector, int inputrangebeg, int inputrangeend)
+{
+    bool found = false;
+    for (int i=0; i<inputvector.size(); i++)
+    {
+        if(inputvector[i].Getnumber() > inputrangebeg && inputvector[i].Getnumber() < inputrangeend)
+        {
+            inputvector[i].GetMember();
+            found = true;
+        }
+
+    }
+    
+    if(!found)
+    {
+        std::cout << "Empty result" << std::endl;
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+    
+}

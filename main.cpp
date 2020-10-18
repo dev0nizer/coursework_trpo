@@ -55,21 +55,7 @@ int main()
             std::cin >> phone_range_begin;
             std::cout << "Enter range end" << std::endl;
             std::cin >> phone_range_end;
-            bool found = false;
-            for (int i=0; i<people.size(); i++)
-            {
-                if(people[i].Getnumber() > phone_range_begin && people[i].Getnumber() < phone_range_end)
-                {
-                    people[i].GetMember();
-                    found = true;
-                }
-
-            }
-            
-            if(!found)
-            {
-                std::cout << "OOPS! No result" << std::endl;
-            }
+            bool found = findbyrange(people, phone_range_begin, phone_range_end);
 
             break;      
         }
