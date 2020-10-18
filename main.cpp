@@ -3,79 +3,9 @@
 #include <string>
 #include <map>
 #include <vector>
+#include "func.cpp"
 
 #define filepath data.txt
-
-
-class Citizen
-{
-    std::string name;
-    std::string city;
-    int phonenumber;
-    Citizen* next;
-    public:
-        void Add(std::string add_name, std::string add_city, int add_phonenumber)
-        {
-            name = add_name;
-            city = add_city;
-            phonenumber = add_phonenumber;
-        }
-
-        void AddFromKeyboard()
-        {
-            std::cout << "Enter name" << std::endl;
-            std::cin >> name;
-            std::cout << "Enter city" << std::endl;
-            std::cin >> city;
-            std::cout << "Enter phone number" << std::endl;
-            std::cin >> phonenumber;        
-        }
-
-        int Getnumber()
-        {
-            return phonenumber;
-        }
-
-        void GetMember()
-        {
-            std::cout << name << " " << city << " " << phonenumber << std::endl;
-        }
-
-};
-
-std::vector <Citizen> LoadFromFile()
-{
-    std::vector <Citizen> temppeople;
-    std::ifstream file("data.txt");
-    if (file.is_open())
-    {
-        while(!file.eof()) // push from file to vector
-        {
-            std::string templine;
-            std::string tempname;
-            std::string tempcity;
-            int tempphonenumber;
-            std::getline(file, templine);
-            int pos = templine.find("|");
-            tempname = templine.substr(0, pos);
-            templine.erase(0, pos + 1);
-            pos = templine.find("|");
-            tempcity = templine.substr(0, pos);
-            templine.erase (0, pos +1);
-            tempphonenumber = std::stoi(templine);
-            Citizen temp;
-            temp.Add(tempname, tempcity, tempphonenumber);
-            temppeople.push_back(temp);
-        }
-        std::cout << "Successfully loaded from file!" << std::endl;
-        return temppeople;
-    }
-    else
-    {
-        std::cout << "Error! Cannot open file";
-        return temppeople;
-    }
-}
 
 int main()
 {
@@ -121,7 +51,6 @@ int main()
                     people[i].GetMember();
                 }
             }
-            if (found)
             if (!found)
             {
                 std::cout << "Member not found" << std::endl;
@@ -133,14 +62,6 @@ int main()
 
         case 4:
         {
-            std::map<int,int> index;
-            std::map<int,int>::iterator it;
-            for (int i = 0; i < people.size(); i++)
-            {
-                index.insert(std::make_pair(people[i].Getnumber(), i));
-            }
-
-            
             int phone_range_begin;
             int phone_range_end;
             std::cout << "Enter range begin" << std::endl;
@@ -148,11 +69,11 @@ int main()
             std::cout << "Enter range end" << std::endl;
             std::cin >> phone_range_end;
             bool found = false;
-            for (it = index.begin(); it != index.end(); it++)
+            for (int i=0; i<people.size(); i++)
             {
-                if(it->first > phone_range_begin && it->first < phone_range_end)
+                if(people[i].Getnumber() > phone_range_begin && people[i].Getnumber() < phone_range_end)
                 {
-                    people[it->second].GetMember();
+                    people[i].GetMember();
                     found = true;
                 }
 
