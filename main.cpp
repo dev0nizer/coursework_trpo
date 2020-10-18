@@ -5,7 +5,7 @@
 #include <vector>
 #include "func.cpp"
 
-#define filepath data.txt
+
 
 int main()
 {
@@ -41,20 +41,7 @@ int main()
             std::cout << "Enter number" << std::endl;
             int input;
             std::cin >> input;
-            bool found = false;
-            int i=0;
-            for (i=0; i<people.size(); i++)
-            {
-                if (people[i].Getnumber() == input)
-                {
-                    found = true;
-                    people[i].GetMember();
-                }
-            }
-            if (!found)
-            {
-                std::cout << "Member not found" << std::endl;
-            }
+            bool found = findbyexactphone(people, input);
             
             break;
         }

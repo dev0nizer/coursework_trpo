@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#define filepath "data.txt"
 
 class Citizen
 {
@@ -43,7 +44,7 @@ class Citizen
 std::vector <Citizen> LoadFromFile()
 {
     std::vector <Citizen> temppeople;
-    std::ifstream file("data.txt");
+    std::ifstream file(filepath);
     if (file.is_open())
     {
         while(!file.eof()) // push from file to vector
@@ -72,4 +73,28 @@ std::vector <Citizen> LoadFromFile()
         std::cout << "Error! Cannot open file";
         return temppeople;
     }
+}
+
+bool findbyexactphone(std::vector<Citizen> inputvector, int inputnumber)
+{
+    bool found = false;
+    int i=0;
+    for (i=0; i<inputvector.size(); i++)
+    {
+        if (inputvector[i].Getnumber() == inputnumber)
+        {
+            found = true;
+            inputvector[i].GetMember();
+        }
+    }
+    if (!found)
+    {
+        std::cout << "Member not found" << std::endl;
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+    
 }
