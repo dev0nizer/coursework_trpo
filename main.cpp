@@ -4,7 +4,7 @@
 #include <vector>
 #include "func.cpp"
 
-
+#define filepath "data.txt"
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
         {
         case 1:
             {
-                people = LoadFromFile();
+                people = LoadFromFile(filepath);
                 break;
             }
         case 2:
@@ -63,7 +63,7 @@ int main()
         {
             for (int i=0; i<people.size(); i++)
             {
-                people[i].GetMember();
+                people[i].PutMember();
             }
             break;
         }
