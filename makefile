@@ -9,7 +9,7 @@ test.o:
 	g++ -std=c++11 ./tests/tests.cpp -o ./tests/tests
 	
 test:
-	./tests/tests.exe
+	./tests/tests
 	
 run:
-	./prog.exe
+	./prog
