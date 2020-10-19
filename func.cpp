@@ -1,4 +1,3 @@
-#define filepath "data.txt"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -33,21 +32,24 @@ class Citizen
             return phonenumber;
         }
 
-        std::string GetMember()
+        void PutMember()
         {
             std::cout << name << " " << city << " " << phonenumber << std::endl;
+        }
+        std::string GetMember()
+        {
             std::string temp;
             temp.append(name);
-            temp.append(" ");
+            temp.append("|");
             temp.append(city);
-            temp.append(" ");
+            temp.append("|");
             temp.append(std::to_string(phonenumber));
             return temp;
         }
 
 };
 
-std::vector <Citizen> LoadFromFile()
+std::vector <Citizen> LoadFromFile(std::string filepath)
 {
     std::vector <Citizen> temppeople;
     std::ifstream file(filepath);
@@ -90,7 +92,7 @@ bool findbyexactphone(std::vector<Citizen> inputvector, int inputnumber)
         if (inputvector[i].Getnumber() == inputnumber)
         {
             found = true;
-            inputvector[i].GetMember();
+            inputvector[i].PutMember();
         }
     }
     if (!found)
@@ -112,7 +114,7 @@ bool findbyrange(std::vector<Citizen> inputvector, int inputrangebeg, int inputr
     {
         if(inputvector[i].Getnumber() > inputrangebeg && inputvector[i].Getnumber() < inputrangeend)
         {
-            inputvector[i].GetMember();
+            inputvector[i].PutMember();
             found = true;
         }
 
