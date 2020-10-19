@@ -5,7 +5,7 @@
 #include <cassert>
 #include "../func.cpp"
 
-#define testfilepath "testdata.txt"
+#define testfilepath "./test/testdata.txt"
 
 int testloadfromfile()
 {
@@ -99,7 +99,5 @@ int main()
 {
     int result = runtests();
     std::cout << result;
-    int x;
-    std::cin >> x;
     return result;
 }
