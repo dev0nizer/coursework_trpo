@@ -6,4 +6,10 @@ main.o:
 	g++ main.cpp -o prog
 
 test.o:
-	g++ ./test/test.cpp -o ./test/test
+	g++ ./tests/tests.cpp -o ./tests/tests
+	
+test:
+	./tests/tests.exe
+	
+run:
+	./prog.exe

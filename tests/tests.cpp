@@ -5,7 +5,7 @@
 #include <cassert>
 #include "../func.cpp"
 
-#define testfilepath "./test/testdata.txt"
+#define testfilepath "./tests/testdata.txt"
 
 int testloadfromfile()
 {
