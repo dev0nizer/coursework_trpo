@@ -10,97 +10,36 @@
 
 #define testfilepath "./tests/testdata.txt"
 
-int testloadfromfile()
+TEST_CASE("testloadfromfile")
 {
     std::vector <Citizen> testvector;
-    
     testvector = LoadFromFile(testfilepath);
     std::ifstream file (testfilepath);
     std::string teststring;
     std::getline(file, teststring);
-
-    assert(teststring == testvector[0].GetMember());
-
-    std::cout << "File loading test passed" << std::endl;
-    return 0;
-}
-
-int testfindbyexactphonetrue()
-{
-    std::vector <Citizen> testvector;
-    Citizen temp;
-    temp.Add("Putin", "Moscow", 1111);
-    testvector.push_back(temp);
-    temp.Add("Trump", "Washington", 2222);
-    testvector.push_back(temp);
-
-    assert(findbyexactphone(testvector, 2222));
-    
-    std::cout << "Find by exact true test passed" << std::endl;
-    return 0;
-}
-
-int testfindbyexactphonefalse()
-{
-    std::vector <Citizen> testvector;
-    Citizen temp;
-    temp.Add("Putin", "Moscow", 1111);
-    testvector.push_back(temp);
-    temp.Add("Trump", "Washington", 2222);
-    testvector.push_back(temp);
-
-    assert(!findbyexactphone(testvector, 3333));
-    
-    std::cout << "Find by exact true false passed" << std::endl;
-
-    return 0;
-}
-
-int testfindbyrangetrue()
-{
-    std::vector <Citizen> testvector;
-    Citizen temp;
-    temp.Add("Putin", "Moscow", 1111);
-    testvector.push_back(temp);
-    temp.Add("Trump", "Washington", 2222);
-    testvector.push_back(temp);
-
-    assert(findbyrange(testvector, 1000,1200));
-
-    std::cout << "Find by range true passed" << std::endl;
-
-    return 0;
-}
-
-int testfindbyrangefalse()
-{
-    std::vector <Citizen> testvector;
-    Citizen temp;
-    temp.Add("Putin", "Moscow", 1111);
-    testvector.push_back(temp);
-    temp.Add("Trump", "Washington", 2222);
-    testvector.push_back(temp);
-
-    assert(!findbyrange(testvector, 1200,2200));
-
-    std::cout << "Find by range false passed" << std::endl;
-
-    return 0;
-}
-
-TEST_CASE("testloadfromfile")
-{
-    REQUIRE(testloadfromfile() == 0);
+    REQUIRE(teststring == testvector[0].GetMember());
 }
 
 TEST_CASE("testfindbyexact")
 {
-    REQUIRE(testfindbyexactphonetrue() == 0);    
-    REQUIRE(testfindbyexactphonefalse() == 0);    
+    std::vector <Citizen> testvector;
+    Citizen temp;
+    temp.Add("Putin", "Moscow", 1111);
+    testvector.push_back(temp);
+    temp.Add("Trump", "Washington", 2222);
+    testvector.push_back(temp);
+    REQUIRE(findbyexactphone(testvector, 2222));    
+    REQUIRE(!findbyexactphone(testvector, 2000));
 }
 
 TEST_CASE("testfindbyrange")
 {
-    REQUIRE(testfindbyrangetrue() == 0);    
-    REQUIRE(testfindbyrangefalse() == 0);    
+    std::vector <Citizen> testvector;
+    Citizen temp;
+    temp.Add("Putin", "Moscow", 1111);
+    testvector.push_back(temp);
+    temp.Add("Trump", "Washington", 2222);
+    testvector.push_back(temp);
+    REQUIRE(findbyrange(testvector, 1000,1200));    
+    REQUIRE(!findbyrange(testvector, 1200,2000));    
 }
