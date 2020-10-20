@@ -88,16 +88,6 @@ int testfindbyrangefalse()
     return 0;
 }
 
-// int runtests()
-// {
-//         testloadfromfile();
-//         testfindbyexactphonetrue();
-//         testfindbyexactphonefalse();
-//         testfindbyrangetrue();
-//         testfindbyrangefalse();
-//         return 0;
-// }
-
 TEST_CASE("testloadfromfile")
 {
     REQUIRE(testloadfromfile() == 0);
