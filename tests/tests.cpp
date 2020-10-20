@@ -5,6 +5,9 @@
 #include <cassert>
 #include "../func.cpp"
 
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
+
 #define testfilepath "./tests/testdata.txt"
 
 int testloadfromfile()
@@ -85,19 +88,29 @@ int testfindbyrangefalse()
     return 0;
 }
 
-int runtests()
+// int runtests()
+// {
+//         testloadfromfile();
+//         testfindbyexactphonetrue();
+//         testfindbyexactphonefalse();
+//         testfindbyrangetrue();
+//         testfindbyrangefalse();
+//         return 0;
+// }
+
+TEST_CASE("testloadfromfile")
 {
-        testloadfromfile();
-        testfindbyexactphonetrue();
-        testfindbyexactphonefalse();
-        testfindbyrangetrue();
-        testfindbyrangefalse();
-        return 0;
+    REQUIRE(testloadfromfile() == 0);
 }
 
-int main()
+TEST_CASE("testfindbyexact")
 {
-    int result = runtests();
-    std::cout << result;
-    return result;
+    REQUIRE(testfindbyexactphonetrue() == 0);    
+    REQUIRE(testfindbyexactphonefalse() == 0);    
+}
+
+TEST_CASE("testfindbyrange")
+{
+    REQUIRE(testfindbyrangetrue() == 0);    
+    REQUIRE(testfindbyrangefalse() == 0);    
 }
