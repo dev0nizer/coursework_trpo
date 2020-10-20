@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <cassert>
 #include "../func.cpp"
 
 #define CATCH_CONFIG_MAIN
